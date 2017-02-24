@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>预览</title>
+</head>
+<body>
+    <div class="main">
+        <div class="head" style="border-bottom: 1px solid #ccc">
+            试卷满分: <input type="text" id="totalScore" value="100">
+            <br> 包含题型:
+            <input type="checkbox" id="type1" checked><label for="type1">单选题</label> 
+            <input type="checkbox" id="type2" checked><label for="type2">多选题</label>
+            <input type="checkbox" id="type3" checked><label for="type3">判断题</label>
+            <input type="checkbox" id="type4"><label for="type4">名词解释题</label>
+            <input type="checkbox" id="type5"><label for="type5">简答题</label>
+            <input type="checkbox" id="type6"><label for="type6">综合论述题</label>
+            <input type="checkbox" id="type7"><label for="type7">案例分析题</label>
+        </div>
+        <div class="content">
+            <!--单选题-->
+            <div class="item single">
+                <span>一、单选题</span> 总分值: <span>0</span>分 每道题<span class="perScore">0</span>分
+            </div>
+            <!--多选题-->
+            <div class="item multiple">
+                <span>二、多选题</span> 总分值: <input type="text" value="0">分 已选择<span class="choosedCount">0</span>道题, 每道题<span class="perScore">0</span>分
+                <input type="button" value="选择试题" class="chooseBtn" data-toggle="modal" data-target="#myModal">
+                <input type="button" value="创建试题">
+                
+            </div>
+            <!--判断题-->
+            <div class="item multiple">
+                <span>三、判断题</span> 总分值: <input type="text" value="0">分 已选择<span class="choosedCount">0</span>道题, 每道题<span class="perScore">0</span>分
+                <input type="button" value="选择试题" class="chooseBtn" data-toggle="modal" data-target="#myModal">
+                <input type="button" value="创建试题">
+                
+            </div>
+            <!--名词解释题-->
+            <div class="item mingci" style="display: none;">
+                <span>四、名词解释题</span> 总分值: <input type="text" value="0">分 已选择<span class="choosedCount">0</span>道题, 每道题<span class="perScore">0</span>分
+                <input type="button" value="选择试题" class="chooseBtn" data-toggle="modal" data-target="#myModal">
+                <input type="button" value="创建试题">
+                
+            </div>
+            <!--简答题-->
+            <div class="item mingci" style="display: none;">
+                <span>五、简单题</span> 总分值: <input type="text" value="0">分 已选择<span class="choosedCount">0</span>道题, 每道题<span class="perScore">0</span>分
+                <input type="button" value="选择试题" class="chooseBtn" data-toggle="modal" data-target="#myModal">
+                <input type="button" value="创建试题">
+                
+            </div>
+            <!--综合论述题-->
+            <div class="item mingci" style="display: none;">
+                <span>六、综合论述题</span> 总分值: <input type="text" value="0">分 已选择<span class="choosedCount">0</span>道题, 每道题<span class="perScore">0</span>分
+                <input type="button" value="选择试题" class="chooseBtn" data-toggle="modal" data-target="#myModal">
+                <input type="button" value="创建试题">
+                
+            </div>
+            <!--案例分析题-->
+            <div class="item mingci" style="display: none;">
+                <span>七、案例分析题</span> 总分值: <input type="text" value="0">分 已选择<span class="choosedCount">0</span>道题, 每道题<span class="perScore">0</span>分
+                <input type="button" value="选择试题" class="chooseBtn" data-toggle="modal" data-target="#myModal">
+                <input type="button" value="创建试题">
+                
+            </div>
+
+            <!-- 选择试题模态框 -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h0 class="modal-title" id="myModalLabel">选择试题</h0>
+                        </div>
+                        <div class="modal-body">
+                            <ul>
+                                <li><input type="checkbox">这道题那啥</li>
+                                <li><input type="checkbox">这个很难</li>
+                                <li><input type="checkbox">恩啊实打实大丰收帝国时代</li>
+                                <li><input type="checkbox">确认瓦房店是非得失</li>
+                                <li><input type="checkbox">阿斯达打扰请二无</li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="saveChoose" data-dismiss="modal">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            到底了
+        </div>
+    </div>
+    <script type="text/javascript">
+        var previewObj = JSON.parse(sessionStorage.getItem("previewObj"));
+        for(var prop in previewObj) {
+            var item = "<div class=\"item single\">"+
+"                <span>一、单选题</span> 总分值: <span>0</span>分 每道题<span class=\"perScore\">0</span>分"+
+"            </div>";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <style>
+        .item{
+            margin: 10px 0 0 10px;
+        }
+        table{
+            border-collapse:collapse;border: 1px solid #ccc;
+        }
+        label{
+            display: inline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="head" style="border-bottom: 1px solid #ccc">
+            试卷满分: <input type="text" id="totalScore" value="100">
+            <br> 包含题型:
+            <input type="checkbox" id="type1" checked><label for="type1">单选题</label> 
+            <input type="checkbox" id="type2" checked><label for="type2">多选题</label>
+            <input type="checkbox" id="type3" checked><label for="type3">判断题</label>
+            <input type="checkbox" id="type4"><label for="type4">名词解释题</label>
+            <input type="checkbox" id="type5"><label for="type5">简答题</label>
+            <input type="checkbox" id="type6"><label for="type6">综合论述题</label>
+            <input type="checkbox" id="type7"><label for="type7">案例分析题</label>
+        </div>
+        <div class="content">
+            <!--单选题-->
+            <div class="item single">
+                <span>一、单选题</span> 总分值: <input type="text" value="0">分 已选择<span class="choosedCount">0</span>道题, 每道题<span class="perScore">0</span>分
+                <input type="button" value="选择试题" class="chooseBtn" data-toggle="modal" data-target="#myModal">
+                <input type="button" value="创建试题">
+                
+            </div>
+            <!--多选题-->
+            <div class="item multiple">
+                <span>二、多选题</span> 总分值: <input type="text" value="0">分 已选择<span class="choosedCount">0</span>道题, 每道题<span class="perScore">0</span>分
+                <input type="button" value="选择试题" class="chooseBtn" data-toggle="modal" data-target="#myModal">
+                <input type="button" value="创建试题">
+                
+            </div>
+            <!--判断题-->
+            <div class="item multiple">
+                <span>三、判断题</span> 总分值: <input type="text" value="0">分 已选择<span class="choosedCount">0</span>道题, 每道题<span class="perScore">0</span>分
+                <input type="button" value="选择试题" class="chooseBtn" data-toggle="modal" data-target="#myModal">
+                <input type="button" value="创建试题">
+                
+            </div>
+            <!--名词解释题-->
+            <div class="item mingci" style="display: none;">
+                <span>四、名词解释题</span> 总分值: <input type="text" value="0">分 已选择<span class="choosedCount">0</span>道题, 每道题<span class="perScore">0</span>分
+                <input type="button" value="选择试题" class="chooseBtn" data-toggle="modal" data-target="#myModal">
+                <input type="button" value="创建试题">
+                
+            </div>
+            <!--简答题-->
+            <div class="item mingci" style="display: none;">
+                <span>五、简单题</span> 总分值: <input type="text" value="0">分 已选择<span class="choosedCount">0</span>道题, 每道题<span class="perScore">0</span>分
+                <input type="button" value="选择试题" class="chooseBtn" data-toggle="modal" data-target="#myModal">
+                <input type="button" value="创建试题">
+                
+            </div>
+            <!--综合论述题-->
+            <div class="item mingci" style="display: none;">
+                <span>六、综合论述题</span> 总分值: <input type="text" value="0">分 已选择<span class="choosedCount">0</span>道题, 每道题<span class="perScore">0</span>分
+                <input type="button" value="选择试题" class="chooseBtn" data-toggle="modal" data-target="#myModal">
+                <input type="button" value="创建试题">
+                
+            </div>
+            <!--案例分析题-->
+            <div class="item mingci" style="display: none;">
+                <span>七、案例分析题</span> 总分值: <input type="text" value="0">分 已选择<span class="choosedCount">0</span>道题, 每道题<span class="perScore">0</span>分
+                <input type="button" value="选择试题" class="chooseBtn" data-toggle="modal" data-target="#myModal">
+                <input type="button" value="创建试题">
+                
+            </div>
+
+            <!-- 选择试题模态框 -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h0 class="modal-title" id="myModalLabel">选择试题</h0>
+                        </div>
+                        <div class="modal-body">
+                            <ul>
+                                <li><input type="checkbox">这道题那啥</li>
+                                <li><input type="checkbox">这个很难</li>
+                                <li><input type="checkbox">恩啊实打实大丰收帝国时代</li>
+                                <li><input type="checkbox">确认瓦房店是非得失</li>
+                                <li><input type="checkbox">阿斯达打扰请二无</li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="saveChoose" data-dismiss="modal">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+
+            <input type="button" value="预览" id="preview">
+            <input type="button" value="保存">
+        </div>
+    </div>
+    <script src="jquery-1.10.1.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script type="text/javascript">
+        //试题类型DOM arr
+        var examItems = $(".item");
+        var currentSelectedIndex;
+        //题型类型, 与后端确认参数名, 这里以数字代替
+        var types = [];
+        for (var i = 0; i < 7; i++) {
+            types.push(i);
+        }
+        //题型显示隐藏
+        $(".head input[type='checkbox']").on("change", function () {
+            var that = $(this);
+            var index = that.index("input[type='checkbox']");
+            console.log(that.prop("checked"));
+            if (that.prop("checked")) {
+                examItems.eq(index).show();
+            } else {
+               examItems.eq(index).hide();
+            }
+            resetItemNum();
+        })
+
+        //临时保存试题数据
+        var tempExamData = [];
+        //选择试题
+        $(".chooseBtn").on("click", function () {            
+            $(".modal-body>ul").html("");
+            var that = $(this);
+            //根据index获取题型
+            currentSelectedIndex = that.index(".chooseBtn");
+            console.log("当前选择的题型"+currentSelectedIndex);
+            /*
+            $.ajax({
+                url: "api",
+                method: post,
+                dataType: "json", 
+                data: {
+                    type: types[index]
+                },
+                success: function(res){
+                    
+                }
+            })
+            */
+            //延时模拟ajax
+            setTimeout(function () {
+                var resData = {
+                    items: ["这是第一道题", "这是第二道题", "这是第三道题"]
+                };
+                tempExamData = resData.items.slice();
+                for(var i = 0; i < resData.items.length; i++){
+                    var li = $("<li><input type=\"checkbox\">"+resData.items[i]+"</li>");
+                    $(".modal-body>ul").append(li);
+                }
+            }, 1000)
+        })
+
+        
+        //选择试题结束
+        $("#saveChoose").on("click", function(){
+            var currentSelectedItem = examItems.eq(currentSelectedIndex);
+            //后端给的试题
+            var items = $(".modal-body>ul>li");
+            console.log(tempExamData);
+            var selectdExamDatas = [];
+            $.each(tempExamData, function(index, item){
+                items.find("input[type='checkbox']").eq(index).prop("checked") ? selectdExamDatas.push(item) : 1;
+            })
+            //如果没有table需要创建
+            var hasTable = currentSelectedItem.find("table").length>0 ? true : false;
+            if(!hasTable) {
+                currentSelectedItem.append($("<table style=\"border-collapse:collapse;border: 1px solid #ccc\">"+
+"                        <tr style=\"background-color: #ccc\">"+
+"                            <th>序号</th>"+
+"                            <th>题目</th>"+
+"                            <th>操作</th>"+
+"                        </tr>"+
+"                    </table>"));
+            }
+            //选中的li新建tr
+            $.each(selectdExamDatas, function(index, item){
+                var tr = $("<tr><td></td><td>"+item+"</td><td><a href=\"#\">查看</a><a href=\"#\" class='rem'>删除</a></td></tr>");
+                //把选择的题放到表格中
+                currentSelectedItem.find("table").append(tr);
+            });
+            resetTableNum(currentSelectedItem.find("table"));
+            //选完清空
+            tempExamData = [];
+            resetScore(currentSelectedItem);
+        })
+
+        //删除
+        $(document).on("click", "table .rem", function(){
+            //取下标
+            var that = $(this);
+            var index = that.parents("tr").index();
+            console.log(index);
+            var table = that.parents("tr").parents("table");
+            that.parents("tr").remove();
+            resetTableNum(table);
+            resetScore(table.parents(".item"));
+            
+            if(table.find("tr").length < 2) {
+                table.remove();
+            }
+        })
+
+
+        //总分值input键盘事件
+        $(document).on("keyup", ".item input[type='text']", function(e) {
+            console.log(e.keyCode);
+            var that = $(this);
+            resetScore(that.parent(".item"));
+        })
+
+        /**
+         * 处理分数
+         * parm: 当前哪一个试题
+         */
+        var resetScore = function(examItem) {
+            //算分数
+            //分数逻辑几个地方用到, 总分数输入修改后, 选择题之后, 删除之后
+            //总分
+            var totalScore = examItem.find("input:first").val() || 0;
+            //已选择?道题
+            var choosedCount = examItem.find("tr").length > 0 ? examItem.find("tr").length-1 : 0;
+            examItem.find(".choosedCount").html(choosedCount);
+            //每道题?分
+            examItem.find(".perScore").html(choosedCount == 0 ? 0 : Math.round(totalScore/choosedCount));
+        }
+
+        /**
+         * 重置序号的方法, 表格增删改查触发
+         * parm: table元素
+         */
+        var resetTableNum = function(table) {
+            table.find("tr>td:first-child").each(function(){
+                console.log(this);
+                $(this).html($(this).parents("tr").index());
+            })
+        }
+
+        //重置大模块的序号
+        var resetItemNum = function() {
+            var nums_ZH = ["一", "二", "三", "四", "五", "六", "七"];
+            examItems.filter(":visible").find("span:first-child").each(function(i) {
+                console.log(i);
+                var newTitle = $(this).html().replace(/./, nums_ZH[i]);
+                $(this).html(newTitle);
+            });
+        }
+
+        //预览
+        //sessionStroge兼容到IE8, IE8需要在服务器环境才能使用
+        //保存当前所选择的几种题型
+        if(!window.sessionStorage) {
+            alert("请升级浏览器");
+        }
+
+        var typesArr = ["单选题", "多选题", "判断题", "名词解释题", "简答题", "综合论述题", "案例分析题"];
+        $("#preview").on("click", function() {
+            console.log("预览");
+            var previewObj = {};
+            //先保存当前的内容
+            var _length = $(".head input[type='checkbox']:checked").length;
+            $("table").each(function() {
+                var _key = typesArr[$(this).parents(".item").index(".item")];
+                previewObj[_key] = [];
+                $(this).find("tr:not(:first)").each(function() {
+                    previewObj[_key].push($(this).find("td:nth-child(2)").html());
+                })
+            })
+            sessionStorage.setItem("previewObj", JSON.stringify(previewObj));
+            window.open("preview.html");
+        })
+    
+        //保存每种题型的内容
+    </script>
+</body>
+
+</html>
