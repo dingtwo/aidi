@@ -116,6 +116,7 @@
     <script src="jquery-1.10.1.min.js"></script>
     <script src="bootstrap.min.js"></script>
     <script type="text/javascript">
+    $(function(){
         //试题类型DOM arr
         var examItems = $(".item");
         var currentSelectedIndex;
@@ -268,30 +269,64 @@
         }
 
         //预览
-        //sessionStroge兼容到IE8, IE8需要在服务器环境才能使用
-        //保存当前所选择的几种题型
+        //IE8需要在服务器环境才能使用
         if(!window.sessionStorage) {
-            alert("请升级浏览器");
+            alert("请升级到IE8以上的浏览器, 否则无法使用预览功能");
         }
 
         var typesArr = ["单选题", "多选题", "判断题", "名词解释题", "简答题", "综合论述题", "案例分析题"];
+        /*结构示例
+        var struct = {
+            "单选题": {
+                "totalScore": 20,
+                "perScore": 5,
+                "count": 2,
+                "tests": [
+                    "第一题",
+                    "第二题"
+                ]
+            }
+        };*/
         $("#preview").on("click", function() {
             console.log("预览");
+            if(totalScoreLimit()) {
+                alert("大了");
+                return;
+            }
             var previewObj = {};
-            //先保存当前的内容
             var _length = $(".head input[type='checkbox']:checked").length;
-            $("table").each(function() {
+            $("table").each(function(index) {
                 var _key = typesArr[$(this).parents(".item").index(".item")];
-                previewObj[_key] = [];
+                previewObj[_key] = {
+                    "totalScore": examItems.eq(index).find("input:first").val(),
+                    "perScore": examItems.eq(index).find(".perScore").html(),
+                    "count": examItems.eq(index).find(".choosedCount").html(),
+                    "tests": []
+                };
+                
+                //内容
                 $(this).find("tr:not(:first)").each(function() {
-                    previewObj[_key].push($(this).find("td:nth-child(2)").html());
+                    previewObj[_key]["tests"].push($(this).find("td:nth-child(2)").html());
                 })
             })
             sessionStorage.setItem("previewObj", JSON.stringify(previewObj));
             window.open("preview.html");
         })
     
+        //分数验证
+        var totalScoreLimit = function() {
+            //总分
+            var totalScore = $("#totalScore").val();
+            //每个
+            var allScore = 0;
+            $(".item:visible").find("input:first").each(function() {
+                allScore += Number($(this).val());
+            })
+            return totalScore < allScore;
+        }
         //保存每种题型的内容
+    });
+        
     </script>
 </body>
 
