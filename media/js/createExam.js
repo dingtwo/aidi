@@ -32,6 +32,11 @@ $(function () {
         //根据index获取题型
         currentSelectedIndex = that.index(".chooseBtn");
         console.log("当前选择的题型" + currentSelectedIndex);
+
+        //已选择几道题
+        var trCount = examItems.eq(currentSelectedIndex).find("tr").length;
+        var actChoCount = trCount-1 > 0 ? trCount-1 : 0;
+        $(".actChoosedCount").html(actChoCount);
         /*
         $.ajax({
             url: "api",
@@ -110,6 +115,8 @@ $(function () {
     $(".content").on("click", "button[data-choose]", function() {
         var that = $(this);
         console.log(that.data("choose"));
+        var actChoCount = Number($(".actChoosedCount").html());
+        //取消
         if(that.data("choose")) {
             that.data("choose", false);
             that.html("选用");
@@ -119,6 +126,7 @@ $(function () {
                     selectdTests.splice(i, 1);
                 }
             }
+            $(".actChoosedCount").html(actChoCount-1);
         }else {
             that.data("choose", true);
             that.html("取消");
@@ -131,8 +139,23 @@ $(function () {
                     selectdTests.push(tmpData[type][i]);
                 }
             }
+            $(".actChoosedCount").html(actChoCount+1);
         }
     });
+
+    //搜索
+    $(".testSearch").on("keyup", function() {
+        var text = $(this).val();
+        console.log(text);
+        $(".testList-item>.test-left").each(function() {
+            if($(this).text().indexOf(text) == -1) {
+                $(this).parent().hide();
+            }else {
+                $(this).parent().show();
+            }
+        })
+    })
+
 
     //选择试题结束
     $("#saveChoose").on("click", function () {
@@ -253,11 +276,6 @@ $(function () {
         }
     };*/
     $("#preview").on("click", function () {
-        console.log("预览");
-        if (totalScoreLimit()) {
-            alert("大了");
-            return;
-        }
         var previewObj = {};
         var _length = $(".head input[type='checkbox']:checked").length;
         $("table").each(function (index) {
@@ -281,17 +299,18 @@ $(function () {
     //分数验证
     var totalScoreLimit = function () {
         //总分
-        var totalScore = $("#totalScore").val();
+        var totalScore = Number($("#totalScore").val());
         //每个
         var allScore = 0;
         $(".item:visible").find("input:first").each(function () {
             allScore += Number($(this).val());
         })
-        return totalScore == allScore;
+        return totalScore === allScore && totalScore && allScore;
     }
 
     //保存
     $("#save").on("click", function() {
+        console.log(totalScoreLimit());
         if(!totalScoreLimit()) {
             alert("请检查分数设置");
             return;
