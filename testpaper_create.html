@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+
+<head>
+
+	<meta charset="utf-8" />
+
+	<title>大连理工大学出版社平台管理系统</title>
+
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+	<meta content="" name="description" />
+
+	<meta content="" name="author" />
+
+	<!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+	<link href="media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+	<link href="media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+
+	<link href="media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+	<link href="media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+
+	<link href="media/css/style.css" rel="stylesheet" type="text/css"/>
+
+	<link href="media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+
+	<link href="media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+
+	<link href="media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+
+	<!-- END GLOBAL MANDATORY STYLES -->
+
+	<link rel="stylesheet" type="text/css" href="media/css/bootstrap-fileupload.css" />
+
+	<link href="media/css/chosen.css" rel="stylesheet" type="text/css"/>
+
+	<!-- BEGIN PAGE LEVEL STYLES -->
+
+	<link rel="stylesheet" type="text/css" href="media/css/jquery.nestable.css" />
+
+	<link rel="stylesheet" type="text/css" href="media/css/select2_metro.css" />
+
+	<link rel="stylesheet" type="text/css" href="media/css/datepicker.css" />
+
+	<link rel="stylesheet" href="webEditor/themes/default/default.css" />
+	<link rel="stylesheet" href="webEditor/plugins/code/prettify.css" />
+	<script charset="utf-8" src="webEditor/kindeditor.js"></script>
+	<script charset="utf-8" src="webEditor/lang/zh_CN.js"></script>
+	<script charset="utf-8" src="webEditor/plugins/code/prettify.js"></script>
+	<script>
+		KindEditor.ready(function(K) {
+				editor1 = K.create('textarea[name="intro"]', {
+				cssPath : 'webEditor/plugins/code/prettify.css',
+				uploadJson : 'webEditor/php/upload_json.php',
+				fileManagerJson : 'webEditor/php/file_manager_json.php',
+				allowFileManager : true,
+				afterCreate : function() {
+					var self = this;
+					K.ctrl(document, 13, function() {
+						self.sync();
+						K('form[name=bookForm]')[0].submit();
+					});
+					K.ctrl(self.edit.doc, 13, function() {
+						self.sync();
+						K('form[name=bookForm]')[0].submit();
+					});
+				},afterBlur: function(){this.sync();}
+			});
+			editor2 = K.create('textarea[name="mulu"]', {
+				cssPath : 'webEditor/plugins/code/prettify.css',
+				uploadJson : 'webEditor/php/upload_json.php',
+				fileManagerJson : 'webEditor/php/file_manager_json.php',
+				allowFileManager : true,
+				afterCreate : function() {
+					var self = this;
+					K.ctrl(document, 13, function() {
+						self.sync();
+						K('form[name=bookForm]')[0].submit();
+					});
+					K.ctrl(self.edit.doc, 13, function() {
+						self.sync();
+						K('form[name=bookForm]')[0].submit();
+					});
+				},afterBlur: function(){this.sync();}
+			});
+			editor3 = K.create('textarea[name="shidu"]', {
+				cssPath : 'webEditor/plugins/code/prettify.css',
+				uploadJson : 'webEditor/php/upload_json.php',
+				fileManagerJson : 'webEditor/php/file_manager_json.php',
+				allowFileManager : true,
+				afterCreate : function() {
+					var self = this;
+					K.ctrl(document, 13, function() {
+						self.sync();
+						K('form[name=bookForm]')[0].submit();
+					});
+					K.ctrl(self.edit.doc, 13, function() {
+						self.sync();
+						K('form[name=bookForm]')[0].submit();
+					});
+				},afterBlur: function(){this.sync();}
+			});
+			prettyPrint();
+		});
+	</script>
+
+	<!-- END PAGE LEVEL STYLES -->
+
+	<link rel="shortcut icon" href="media/image/favicon.ico" />
+
+</head>
+
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+
+<body class="page-header-fixed">
+
+	<!-- BEGIN HEADER -->
+
+	<div class="header navbar navbar-inverse navbar-fixed-top">
+
+		<!-- BEGIN TOP NAVIGATION BAR -->
+
+		<div class="navbar-inner">
+
+			<div class="container-fluid">
+
+				<!-- BEGIN LOGO -->
+
+				<a class="brand" href="index.html">
+
+				<img src="media/image/logo.png" alt="logo" />
+
+				大连理工大学出版社平台管理系统
+
+				</a>
+
+				<!-- END LOGO -->
+
+				<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+
+				<a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+
+				<img src="media/image/menu-toggler.png" alt="" />
+
+				</a>          
+
+				<!-- END RESPONSIVE MENU TOGGLER -->            
+
+				<!-- BEGIN TOP NAVIGATION MENU -->              
+
+				<ul class="nav pull-right">
+
+
+					<li class="dropdown user">
+
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+						<img alt="" src="media/image/avatar1_small.jpg" />
+
+						<span class="username">&nbsp;小编&nbsp;</span>
+
+						<i class="icon-angle-down"></i>
+
+						</a>
+
+						<ul class="dropdown-menu">
+
+							<li><a href="extra_profile.html"><i class="icon-user"></i> 更改密码</a></li>
+
+							<li><a href="login.html"><i class="icon-key"></i> 退出登录</a></li>
+
+						</ul>
+
+					</li>
+
+					<!-- END USER LOGIN DROPDOWN -->
+
+				</ul>
+
+				<!-- END TOP NAVIGATION MENU --> 
+
+			</div>
+
+		</div>
+
+		<!-- END TOP NAVIGATION BAR -->
+
+	</div>
+
+	<!-- END HEADER -->
+
+	<!-- BEGIN CONTAINER -->   
+
+	<div class="page-container row-fluid">
+
+		<!-- BEGIN SIDEBAR -->
+
+		<div class="page-sidebar nav-collapse collapse">
+
+			<!-- BEGIN SIDEBAR MENU -->        
+
+			<ul class="page-sidebar-menu">
+
+				<li>
+
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+
+					<div class="sidebar-toggler hidden-phone"></div>
+
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+
+				</li>
+
+				<li>
+
+					<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+
+					<form class="sidebar-search">
+
+						
+
+					</form>
+
+					<!-- END RESPONSIVE QUICK SEARCH FORM -->
+
+				</li>
+
+				<li>
+
+					<a href="javascript:;">
+
+					<i class="icon-home" style="color: #fff;"></i> 
+
+					<span class="title">平台首页</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li>
+
+							<a href="index_banner.html">
+
+							banner设置</a>
+
+						</li>
+
+						<li >
+
+							<a href="index_jiaocai_reco.html">
+
+							教材推荐设置</a>
+
+						</li>
+
+						<li >
+
+							<a href="index_zhengwen_ad.html">
+
+							正文广告设置</a>
+
+						</li>
+
+						<li >
+
+							<a href="index_book_manage.html">
+
+							书目上传管理</a>
+
+						</li>
+
+						<li >
+
+							<a href="index_bottom_ad.html">
+
+							底部广告设置</a>
+
+						</li>
+
+						<li>
+
+							<a href="index_friendlink.html">
+
+							友情链接管理</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li>
+
+					<a href="javascript:;">
+
+					<i class="icon-bookmark-empty" style="color: #fff;"></i> 
+
+					<span class="title">教材中心</span>
+
+					<span class="selected"></span>
+
+					<span class="arrow"></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="book_manage.html">
+
+							教材上传管理</a>
+
+						</li>
+
+						<li >
+
+							<a href="feedback_manage.html">
+
+							意见反馈管理</a>
+
+						</li>
+
+						<li >
+
+							<a href="hotword_manage.html">
+
+							热搜词设置</a>
+
+						</li>
+
+						<li >
+
+							<a href="bookcategory_manage.html">
+
+							教材分类设置</a>
+
+						</li>
+
+						<li >
+
+							<a href="book_index_banner.html">
+
+							教材中心广告设置</a>
+
+						</li>
+
+						<li >
+
+							<a href="editer_manage.html">
+
+							编辑人员管理</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-table" style="color: #fff;"></i> 
+
+					<span class="title">资源中心</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li>
+
+							<a href="resource_manage.html">
+
+							资源上传管理</a>
+
+						</li>
+
+						<li>
+
+							<a href="resource_check.html">
+
+							上传资源审核</a>
+
+						</li>
+
+						<li >
+
+							<a href="resource_hotword.html">
+
+							热搜词设置</a>
+
+						</li>
+
+						<li >
+
+							<a href="resource_category.html">
+
+							资源分类设置</a>
+
+						</li>
+
+						<li >
+
+							<a href="resource_type.html">
+
+							资源类型设置</a>
+
+						</li>
+
+						<li >
+
+							<a href="resource_top_banner.html">
+
+							资源中心广告设置</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="active">
+
+					<a href="javascript:;">
+
+					<i class="icon-briefcase" style="color: #fff;"></i> 
+
+					<span class="title">在线教学</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="course_manage.html">
+
+							课程添加管理</a>
+
+						</li>
+
+						<li >
+
+							<a href="rbook_manage.html">
+
+							参考书管理</a>
+
+						</li>
+
+						<li >
+
+							<a href="student_manage.html">
+
+							已注册学生</a>
+
+						</li>
+
+						<li >
+
+							<a href="course_time.html">
+
+							课程表管理</a>
+
+						</li>
+
+						<li >
+
+							<a href="notice_teacher.html">
+
+							公告管理</a>
+
+						</li>
+
+						<li >
+
+							<a href="sitemessage_manage.html">
+
+							消息管理</a>
+
+						</li>
+
+						<li >
+
+							<a href="course_code.html">
+
+							课程激活码管理</a>
+
+						</li>
+
+						<li >
+
+							<a href="places_code.html">
+
+							名额码管理</a>
+
+						</li>
+
+						<li >
+
+							<a href="places_info.html">
+
+							名额增减明细</a>
+
+						</li>
+
+						<li >
+
+							<a href="class_info.html">
+
+							班级信息</a>
+
+						</li>
+
+						<li >
+
+							<a href="class_join.html">
+
+							班级加入申请</a>
+
+						</li>
+
+						<li >
+
+							<a href="course_catalog.html">
+
+							课程目录管理</a>
+
+						</li>
+
+						<li>
+
+							<a href="sys_resource.html">
+
+							系统课程资源</a>
+
+						</li>
+
+						<li >
+
+							<a href="teacher_resource.html">
+
+							老师课程资源</a>
+
+						</li>
+
+						<li>
+
+							<a href="sys_task.html">
+
+							系统作业资源</a>
+
+						</li>
+
+						<li>
+
+							<a href="teacher_task.html">
+
+							老师作业资源</a>
+
+						</li>
+
+						<li>
+
+							<a href="question_category.html">
+
+							题型管理</a>
+
+						</li>
+
+						<li>
+
+							<a href="question.html">
+
+							题库管理</a>
+
+						</li>
+
+						<li class="active">
+
+							<a href="testpaper.html">
+
+							试卷管理</a>
+
+						</li>
+
+						<li>
+
+							<a href="exam.html">
+
+							考试管理</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-vk" style="color: #fff;"></i> 
+
+					<span class="title">出版专栏</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="publish_contact.html">
+
+							联系我们</a>
+
+						</li>
+
+						<li >
+
+							<a href="publish_select.html">
+
+							选题开发</a>
+
+						</li>
+
+						<li >
+
+							<a href="publish_process.html">
+
+							出版流程</a>
+
+						</li>
+
+						<li >
+
+							<a href="publish_konwledge.html">
+
+							出版知识</a>
+
+						</li>
+
+						<li >
+
+							<a href="publish_banner.html">
+
+							出版专栏banner</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-gift" style="color: #fff;"></i> 
+
+					<span class="title">关于我们</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li>
+
+							<a href="about_intro.html">
+
+							企业简介</a>
+
+						</li>
+
+						<li >
+
+							<a href="about_event.html">
+
+							大事记</a>
+
+						</li>
+
+						<li >
+
+							<a href="about_honor.html">
+
+							荣誉业绩</a>
+
+						</li>
+
+						<li >
+
+							<a href="about_item.html">
+
+							国家项目</a>
+
+						</li>
+
+						<li >
+
+							<a href="about_banner.html">
+
+							关于我们banner</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-user" style="color: #fff;"></i> 
+
+					<span class="title">会员管理</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="member_manage.html">
+
+							已注册会员</a>
+
+						</li>
+
+						<li >
+
+							<a href="member_fav.html">
+
+							会员收藏记录</a>
+
+						</li>
+
+						<li >
+
+							<a href="school_manage.html">
+
+							学校管理</a>
+
+						</li>
+
+						<li >
+
+							<a href="major_manage.html">
+
+							专业管理</a>
+
+						</li>
+
+						<li >
+
+							<a href="member_banner.html">
+
+							会员中心banner</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-dribble" style="color: #fff;"></i> 
+
+					<span class="title">基础内容维护</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li>
+
+							<a href="news_manage.html">
+
+							新闻发布管理</a>
+
+						</li>
+
+						<li >
+
+							<a href="site_set.html">
+
+							站点配置</a>
+
+						</li>
+
+						<li >
+
+							<a href="content_reg.html">
+
+							会员注册协议</a>
+
+						</li>
+
+						<li >
+
+							<a href="content_reg.html">
+
+							学生注册协议</a>
+
+						</li>
+
+						<li >
+
+							<a href="content_law.html">
+
+							法律声明</a>
+
+						</li>
+
+						<li >
+
+							<a href="content_private.html">
+
+							隐私协议</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-th" style="color: #fff;"></i> 
+
+					<span class="title">站点配置</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="site_set.html">
+
+							站点配置</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-file-text" style="color: #fff;"></i> 
+
+					<span class="title">系统管理</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li>
+
+							<a href="sys_user.html">
+
+							用户与权限设置</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+
+			</ul>
+
+			<!-- END SIDEBAR MENU -->
+
+		</div>
+
+		<!-- END SIDEBAR -->
+
+		<!-- BEGIN PAGE -->
+
+		<div class="page-content">
+
+			<!-- BEGIN PAGE CONTAINER-->
+
+			<div class="container-fluid">
+
+				<!-- BEGIN PAGE HEADER-->
+
+				<div class="row-fluid">
+
+					<div class="span12">
+
+						<h3 class="page-title">
+
+							试卷管理
+
+						</h3>
+
+						<ul class="breadcrumb">
+
+							<li>
+
+								<i class="icon-home"></i>
+
+								<a href="index.html">系统首页</a> > <a href="testpaper.html">试卷管理</a> > <a href="testpaper_create.html">创建试卷</a>
+
+							</li>
+
+						</ul>
+
+						<!-- END PAGE TITLE & BREADCRUMB-->
+
+					</div>
+
+				</div>
+
+				<!-- END PAGE HEADER-->
+
+				<!-- BEGIN PAGE CONTENT-->
+
+				<div class="tab-pane active" id="tab_1">
+
+					<div class="portlet box blue">
+
+						<div class="portlet-title">
+
+							<div class="caption"><i class="icon-reorder"></i>创建试卷</div>
+
+						</div>
+
+						<div class="portlet-body form">
+
+							<!-- BEGIN FORM-->
+
+							<form id="bookForm" name="bookForm" action="#" class="horizontal-form">
+
+								<div class="row-fluid">
+
+									<div class="control-group">
+
+										<label class="control-label" for="lastName">所属课程</label>
+
+										<div class="controls">
+
+											<select class="span12 select2_category" data-placeholder="所属课程" tabindex="1">
+												<option value=""></option>
+												<option value="1">课程大纲</option>
+												<option value="2">电子教案</option>
+											</select>
+											<br /><br />
+											<span class="help-block">请选择资源类型！</span>
+											
+										</div>
+
+									</div>
+
+								</div>
+
+								<!--/row-->
+
+								<div class="row-fluid">
+
+									<div class="span6 ">
+
+										<div class="control-group">
+
+											<label class="control-label" for="lastName">试卷名称</label>
+
+											<div class="controls">
+
+												<input type="text" id="firstName" class="m-wrap span12" placeholder="">
+
+												<span class="help-block">请填写试卷名称！</span>
+												
+											</div>
+
+										</div>
+
+									</div>
+
+									<!--/span-->
+
+									<div class="span6 ">
+
+										<div class="control-group">
+
+											<label class="control-label" for="lastName">试卷满分</label>
+
+											<div class="controls">
+
+												<div class="input-append">
+
+													<input class="m-wrap " type="text" id="totalScore"><span class="add-on">分</span>
+
+												</div>
+
+												<span class="help-block">请填写试卷总分数！</span>
+												
+											</div>
+
+										</div>
+
+									</div>
+
+									<!--/span-->
+
+								</div>
+
+								<div class="row-fluid">
+
+									<div class="span6 ">
+
+										<div class="control-group">
+
+											<label class="control-label" for="lastName">显示排序</label>
+
+											<div class="controls">
+
+												<input type="text" id="firstName" class="m-wrap span12" value="0" placeholder="">
+
+												<span class="help-block">按数字进行排序，数字越大，排序越靠前</span>
+
+											</div>
+
+										</div>
+
+									</div>
+
+									<div class="span6">
+
+										<div class="control-group">
+
+											<label class="control-label" for="lastName">显示</label>
+
+											<div class="controls">
+
+												<label class="radio">
+													<input type="radio" name="optionsRadios7" value="是" checked="true" />是
+												</label>
+
+												<label class="radio">
+													<input type="radio" name="optionsRadios7" value="否" />否
+												</label>
+
+											</div>
+
+										</div>
+
+									</div>
+
+								</div>
+
+								<div class="row-fluid">
+
+									<div class="control-group">
+
+										<label class="control-label" for="lastName">包含题型</label>
+
+										<div class="controls">
+
+											<label class="checkbox">
+												<input type="checkbox" name="optionsRadios1" value="单选题" checked/>单选题
+											</label>
+
+											<label class="checkbox">
+												<input type="checkbox" name="optionsRadios1" value="多选题" checked />多选题
+											</label>
+
+											<label class="checkbox">
+												<input type="checkbox" name="optionsRadios1" value="判断题" checked/>判断题
+											</label>
+
+											<label class="checkbox">
+												<input type="checkbox" name="optionsRadios1" value="名词解释题" />名词解释题
+											</label>
+
+											<label class="checkbox">
+												<input type="checkbox" name="optionsRadios1" value="简答题" />简答题
+											</label>
+
+											<label class="checkbox">
+												<input type="checkbox" name="optionsRadios1" value="综合论述题" />综合论述题
+											</label>
+
+											<label class="checkbox">
+												<input type="checkbox" name="optionsRadios1" value="案例分析题" />案例分析题
+											</label>
+											
+										</div>
+
+									</div>
+
+									<div class="content">
+            <!--单选题-->
+            <div class="item">
+                <span>一、单选题</span> 总分值: <input type="text" class="m-wrap" value="0">分 已选择<span class="choosedCount">0</span>道题, 每道题<span class="perScore">0</span>分
+                <input type="button" value="选择试题" class="chooseBtn" data-toggle="modal" data-target="#myModal">
+                <input type="button" value="创建试题">
+                
+            </div>
+            <!--多选题-->
+            <div class="item">
+                <span>二、多选题</span> 总分值: <input type="text" class="m-wrap"  value="0">分 已选择<span class="choosedCount">0</span>道题, 每道题<span class="perScore">0</span>分
+                <input type="button" value="选择试题" class="chooseBtn" data-toggle="modal" data-target="#myModal">
+                <input type="button" value="创建试题">
+                
+            </div>
+            <!--判断题-->
+            <div class="item">
+                <span>三、判断题</span> 总分值: <input type="text" value="0">分 已选择<span class="choosedCount">0</span>道题, 每道题<span class="perScore">0</span>分
+                <input type="button" value="选择试题" class="chooseBtn" data-toggle="modal" data-target="#myModal">
+                <input type="button" value="创建试题">
+                
+            </div>
+            <!--名词解释题-->
+            <div class="item" style="display: none;">
+                <span>四、名词解释题</span> 总分值: <input type="text" value="0">分 已选择<span class="choosedCount">0</span>道题, 每道题<span class="perScore">0</span>分
+                <input type="button" value="选择试题" class="chooseBtn" data-toggle="modal" data-target="#myModal">
+                <input type="button" value="创建试题">
+                
+            </div>
+            <!--简答题-->
+            <div class="item" style="display: none;">
+                <span>五、简单题</span> 总分值: <input type="text" value="0">分 已选择<span class="choosedCount">0</span>道题, 每道题<span class="perScore">0</span>分
+                <input type="button" value="选择试题" class="chooseBtn" data-toggle="modal" data-target="#myModal">
+                <input type="button" value="创建试题">
+                
+            </div>
+            <!--综合论述题-->
+            <div class="item" style="display: none;">
+                <span>六、综合论述题</span> 总分值: <input type="text" value="0">分 已选择<span class="choosedCount">0</span>道题, 每道题<span class="perScore">0</span>分
+                <input type="button" value="选择试题" class="chooseBtn" data-toggle="modal" data-target="#myModal">
+                <input type="button" value="创建试题">
+                
+            </div>
+            <!--案例分析题-->
+            <div class="item" style="display: none;">
+                <span>七、案例分析题</span> 总分值: <input type="text" value="0">分 已选择<span class="choosedCount">0</span>道题, 每道题<span class="perScore">0</span>分
+                <input type="button" value="选择试题" class="chooseBtn" data-toggle="modal" data-target="#myModal">
+                <input type="button" value="创建试题">
+                
+            </div>
+
+            <!-- 选择试题模态框 -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+							<!-- Nav tabs -->
+  <ul class="nav nav-tabs test_wrap" role="tablist">
+    <li role="presentation" class="active"><a href="#defaultTest" aria-controls="defaultTest" role="tab" data-toggle="tab">默认试题</a></li>
+    <li role="presentation"><a href="#myTest" aria-controls="myTest" role="tab" data-toggle="tab">我的试题</a></li>
+		<li>已选择<span>5</span>道试题</li>
+		<li>
+			<input type="text" placeholder="请输入关键字搜索">
+		</li>
+  </ul>
+                            
+                        </div>
+                        <div class="modal-body">
+
+							<!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="defaultTest">
+		<div class="testList">
+			<div class="testList-item clearfix" data-id=20>
+				<div class="test-left pull-left">
+					<p>这是第一套默认试题</p>
+					<label><input type="radio" value="1" name="1">A 可复制性</label>
+					<label><input type="radio">A 可复制</label>
+					<label><input type="radio">A 可复制性</label>
+					<label><input type="radio">A 可复制性</label>
+				</div>
+				<div class="test-right pull-right">
+					<button type="button" class="btn btn-primary" data-choose="false">选用</button>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div role="tabpanel" class="tab-pane" id="myTest">
+		<div class="testList">
+			<div class="testList-item clearfix">
+				<div class="test-left pull-left" data-id=20>
+					<p>这是第一套我自己的试题</p>
+					<label><input type="radio" value="1" name="1">A 可复制性</label>
+					<label><input type="radio">A 可复制</label>
+					<label><input type="radio">A 可复制性</label>
+					<label><input type="radio">A 可复制性</label>
+				</div>
+				<div class="test-right pull-right">
+					<button type="button" class="btn btn-primary">选用</button>
+				</div>
+			</div>
+		</div>
+	</div>
+  </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="saveChoose" data-dismiss="modal">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+
+            <input type="button" value="预览" id="preview">
+            <input type="button" value="保存" id="save">
+        </div>
+    </div>
+									
+								</div>
+
+								<div class="form-actions">
+
+									<button type="submit" class="btn blue"><i class="icon-ok"></i> 确认提交</button>
+
+									<button type="button" class="btn" onclick="history.go(-1);">取消返回</button>
+
+								</div>
+
+							</form>
+
+							<!-- END FORM--> 
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<!-- END PAGE -->    
+
+	</div>
+
+	<!-- END CONTAINER -->
+
+	<!-- BEGIN FOOTER -->
+
+	<div class="footer">
+
+		<div class="footer-inner">
+
+			2016 &copy; 大连理工大学出版社
+
+		</div>
+
+		<div class="footer-tools">
+
+			<span class="go-top">
+
+			<i class="icon-angle-up"></i>
+
+			</span>
+
+		</div>
+
+	</div>
+
+	<!-- END FOOTER -->
+
+	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+	<!-- BEGIN CORE PLUGINS -->
+
+	<script src="media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+
+	<script src="media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+
+	<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+
+	<script src="media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
+
+	<script src="media/js/bootstrap.min.js" type="text/javascript"></script>
+
+	<!--[if lt IE 9]>
+
+	<script src="media/js/excanvas.min.js"></script>
+
+	<script src="media/js/respond.min.js"></script>  
+
+	<![endif]-->   
+
+	<script src="media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+
+	<script src="media/js/jquery.blockui.min.js" type="text/javascript"></script>  
+
+	<script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
+
+	<script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+
+	<script type="text/javascript" src="media/js/bootstrap-fileupload.js"></script>
+
+	<!-- END CORE PLUGINS -->
+
+	<!-- END PAGE LEVEL PLUGINS -->
+
+	<!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+	<script src="media/js/jquery.nestable.js"></script>  
+
+	<script type="text/javascript" src="media/js/select2.min.js"></script>
+
+	<script type="text/javascript" src="media/js/bootstrap-datepicker.js"></script>
+
+	<!-- END PAGE LEVEL SCRIPTS -->     
+
+	<script src="media/js/ui-nestable.js"></script>
+
+	<script type="text/javascript" src="media/js/chosen.jquery.min.js"></script>
+
+	<script src="media/js/app.js"></script> 
+
+	<script src="media/js/form-samples.js"></script> 
+
+	<script src="media/js/form-components.js"></script>
+
+	<script src="media/js/gallery.js"></script>  
+
+	<script src="media/js/createExam.js"></script>
+
+	<script>
+
+		jQuery(document).ready(function() {       
+
+		   // initiate layout and plugins
+
+		   App.init();
+
+		   FormSamples.init();
+
+		   FormComponents.init();
+
+		   Gallery.init();
+
+		   UINestable.init();
+
+		});
+
+	</script>
+
+	<!-- END JAVASCRIPTS -->
+
+<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>
+
+<!-- END BODY -->
+
+</html>
